@@ -24,6 +24,8 @@ import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 import Dropdown from 'primevue/dropdown';
 
+import axios from 'axios';
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [

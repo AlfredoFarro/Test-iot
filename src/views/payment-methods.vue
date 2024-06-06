@@ -1,7 +1,7 @@
 <template>
     <div class="main-container">
         <div class="column left-column">
-            <Button class="back-button" label="Return" />
+            <Button class="back-button" label="Return" @click="BackClick"/>
         </div>
         <div class="column middle-column">
             <div class="credit-card-container">
@@ -17,8 +17,8 @@
                 </div>
                 <br>
                 <div class="buttons">
-                    <Button class="continue-button" label="Continue" />
-                    <Button class="cancel-button" label="Cancel" />
+                    <Button class="continue-button" label="Continue" @click="ContinueClick"/>
+                    <Button class="cancel-button" label="Cancel" @click="BackClick"/>
                 </div>
             </div>
         </div>
@@ -42,6 +42,14 @@
 
 <script>
 export default {
+    methods: {
+        ContinueClick() {
+            this.$router.push('/payment-confirm');
+        },
+        BackClick() {
+            this.$router.push('/products');
+        },
+    },
     data() {
         return {
             selectedCards: null,

@@ -1,6 +1,6 @@
 <template>
   <div class="outer-container">
-    <Button class="top-left-button" label="Return" />
+    <Button class="top-left-button" label="Return" @click="BackClick"/>
     <div class="purchase-success">
       <div class="header">
         <img src="../assets/Logo_negro.png" alt="Success Icon" class="icon" />
@@ -27,15 +27,14 @@
         <div class="purchase-info2">
           <h3>Purchase time</h3>
           <h3>12:56</h3>
-        </div>
-          
+        </div>  
         <div class="auth-code">
           <h3>Authorization code</h3>
           <h3>94655272</h3>
         </div>
       </div>
       <div class="actions">
-        <button @click="viewProducts">See products again</button>
+        <button @click="BackClick">See products again</button>
       </div>
     </div>
   </div>
@@ -43,7 +42,11 @@
 
 <script>
 export default {
-   
+  methods: {
+    BackClick() {
+        this.$router.push('/products');
+    }
+  }
 }
 </script>
 

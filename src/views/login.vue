@@ -18,10 +18,10 @@
                 </FloatLabel>
             </div>
             <div class="buttons">
-                <Button style="margin: 1rem; width: 350px;border-radius: 100px;" class="buy-button"label="Log in into your account" />
+                <Button style="margin: 1rem; width: 350px;border-radius: 100px;" class="buy-button"label="Log in into your account" @click="LogInClick"/>
                 <div class="buttons-childs">
-                    <Button style="margin-top: 1rem;margin-right: 2rem;border-radius: 100px;text-align: center;" class="buy-button"label="Sign In" />
-                    <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Forgot your password?" />
+                    <Button style="margin-top: 1rem;margin-right: 2rem;border-radius: 100px;text-align: center;" class="buy-button"label="Sign In" @click="SignInClick"/>
+                    <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Forgot your password?" @click="ForgotClick"/>
                 </div>
             </div>
         </div>
@@ -30,7 +30,17 @@
 </template>
 <script>
 export default {
-    
+    methods: {
+        LogInClick() {
+            this.$router.push('/user-profile');
+        },
+        SignInClick() {
+            this.$router.push('/register');
+        },
+        ForgotClick() {
+            this.$router.push('/forgot');
+        }
+    }
 }
 </script>
 <style scoped>

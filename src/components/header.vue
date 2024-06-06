@@ -10,15 +10,22 @@
         </div>
         
         <div class="buttons">
-            <Button label="Log in" rounded/>
-            <Button label="Sign up" rounded/>
+            <Button label="Log in" rounded @click="LogInClick"/>
+            <Button label="Sign up" rounded @click="SignUpClick"/>
         </div>
     </div>
 </template>
 <script>
-export default {
-    
-}
+    export default {
+        methods: {
+                LogInClick() {
+                    this.$router.push('/login');
+                },
+                SignUpClick() {
+                    this.$router.push('/register');
+                }
+            }
+    }
 </script>
 <style scoped>
     h1{

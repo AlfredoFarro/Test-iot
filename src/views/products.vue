@@ -18,8 +18,8 @@
                     </template>
                     <template #footer>
                         <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" />
-                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" />
+                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
+                            <Button class="buy-button" icon="pi pi-angle-right" label="More Info" @click="handleCartClick"/>
                         </div>
                     </template>
                 </Card>
@@ -36,8 +36,8 @@
                     </template>
                     <template #footer>
                         <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" />
-                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" />
+                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick" />
+                            <Button class="buy-button" icon="pi pi-angle-right" label="More Info" @click="handleCartClick" />
                         </div>
                     </template>
                 </Card>
@@ -51,8 +51,16 @@
 </template>
 
 <script>
+import axios from 'axios';
     export default {
-        
+        methods: {
+            handleCartClick() {
+                this.$router.push('/infoproducts');
+            },
+            handleBuyClick(){
+                this.$router.push('/payment-methods');
+            }
+        },
     }
 </script>
 
