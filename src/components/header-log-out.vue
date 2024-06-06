@@ -10,13 +10,17 @@
         </div>
         
         <div class="buttons">
-            <Button label="Log out" rounded/>
+            <Button label="Log out" rounded @click="LogInClick"/>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    methods: {
+        LogInClick() {
+            this.$router.push('/');
+        }
+    }
 }
 </script>
 <style scoped>

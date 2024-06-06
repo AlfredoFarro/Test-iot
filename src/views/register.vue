@@ -22,8 +22,8 @@
                 </FloatLabel>
             </div>
             <div class="buttons">
-                <Button style="margin-top: 1rem;width: 150px;border-radius: 100px;text-align: center;" class="buy-button"label="Log In" />
-                <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Create Account" />
+                <Button style="margin-top: 1rem;width: 150px;border-radius: 100px;text-align: center;" class="buy-button"label="Log In" @click="LogInClick"/>
+                <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Create Account" @click="CreateAccountClick"/>
                 
             </div>
         </div>
@@ -32,7 +32,14 @@
 </template>
 <script>
 export default {
-    
+    methods: {
+        LogInClick() {
+            this.$router.push('/user-profile');
+        },
+        CreateAccountClick() {
+            this.$router.push('/create-account');
+        }
+    }
 }
 </script>
 <style scoped>

@@ -9,11 +9,11 @@
                     <img alt="user header" src="../assets/Logo_negro.png"/>
                 </div>
                 <div class="credit-card-info same-size">
-                    <i class="pi pi-credit-card"></i><h3>Debit ****1320</h3> 
+                    <i class="pi pi-credit-card"></i><h3>{{ cards.length > 0 ? cards[0].cardNumber : '' }}</h3> 
                 </div>
                 <br>
                 <div class="dropdown same-size">
-                    <Dropdown v-model="selectedCards" :options="cards" optionLabel="name" placeholder="Select a Card" class="w-full md:w-14rem same-size" />
+                    <Dropdown v-model="selectedCards" :options="cardNumbers" placeholder="Select a Card" class="w-full md:w-14rem same-size" />
                 </div>
                 <br>
                 <div class="buttons">
@@ -28,11 +28,11 @@
                     <img alt="user header" src="../assets/Logo_negro.png"class="summary-image"/>
                 </div>
                 <div class="content">
-                    <h2>OneUpv1</h2>
+                    <h2>{{ products.length > 0 ? products[1].productName : '' }}</h2>
                     <h3>(1) unit</h3>
                     <div class="total">
                         <h3>Total Compra</h3>
-                        <h3>$100.00</h3>
+                        <h3>${{ products.length > 0 ? products[1].productPrice : '' }}</h3>
                     </div>
                 </div>
             </div>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     methods: {
         ContinueClick() {
@@ -54,13 +55,39 @@ export default {
         return {
             selectedCards: null,
             cards: [
-                { name: 'Debit ****1320' },
-                { name: 'Debit ****1323' },
-                { name: 'Debit ****5435' },
-                { name: 'Debit ****8768' },
-                { name: 'Debit ****5467' }
+
+            ],
+            cardNumbers: [
+                
+            ],
+            products:[
+
             ]
         };
+    },
+    mounted() {
+
+    axios
+        .get('https://oneupbackend.zeabur.app/api/oneup/v1/paymentmethod')
+        .then(response => {
+            this.cards = response.data;
+            this.cardNumbers = response.data.map(cards => cards.cardNumber);
+            console.log(this.cardNumbers);
+            console.log(this.cards);
+            
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    axios
+        .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
+        .then(response => {
+            this.products = response.data;
+            
+        })
+        .catch(error => {
+          console.log(error);
+        });    
     }
 }
 </script>
